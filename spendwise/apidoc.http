@@ -1,0 +1,94 @@
+#autherization endpoints
+#api call for create user
+###
+post  http://127.0.0.1:8000/v1/spending/register/
+Content-Type: application/json
+
+{
+
+    "username":"rest",
+    "email":"rest@gmail.com",
+    "password":"rest@123"
+
+
+
+
+}
+
+#api call for generate token
+###
+post http://127.0.0.1:8000/v1/spending/token/
+Content-Type: application/json
+
+{
+    "username":"django",
+    "password":"django@123"
+
+
+}
+
+#api call for get current user
+###
+get http://127.0.0.1:8000/v1/spending/getme/
+Accept: application/json
+Authorization: Token 450ad90e82cb19d203dc3da374a5563707f78d0b
+
+#api call for get users
+###
+get http://127.0.0.1:8000/v1/spending/expense/
+Accept: application/json
+Authorization: Basic django:django@123
+
+#api call for add expense
+###
+post http://127.0.0.1:8000/v1/spending/expense/
+Content-Type: application/json
+Authorization: Token 450ad90e82cb19d203dc3da374a5563707f78d0b
+
+{
+
+    "title":"fuel in RE",
+    "amount":1000,
+    "category":"TRAVEL",
+    "payment_method":"cash"
+
+
+}
+
+#api call for update expense
+###
+PUT http://127.0.0.1:8000/v1/spending/expense/1/
+Content-Type: application/json
+Authorization: Basic django:django@123
+
+{
+  "id": 4,
+  "title": "tax",
+  "amount": "300.00",
+  "category": "BILLS",
+  "priority": "need",
+  "payment_method": "upi",
+  "created_at": "2026-10-11T12:09:28.793317Z",
+  "updated_at": "2026-10-11T12:09:28.793357Z",
+  "owner": 1
+}
+
+#api call for retrieve expense
+###
+get http://127.0.0.1:8000/v1/spending/expense/1/
+Accept: application/json
+Authorization: Basic rest:rest@123
+
+#api call for todays summary
+###
+get  http://127.0.0.1:8000/v1/spending/summary/
+Accept: application/json
+Authorization:  Token 450ad90e82cb19d203dc3da374a5563707f78d0b
+
+#api calll for budget
+###
+get http://127.0.0.1:8000/v1/spending/budget/
+Accept: application/json
+Authorization: Token 450ad90e82cb19d203dc3da374a5563707f78d0b
+#pip freeze > requirements.txt
+#pip install-r requirements.txt
